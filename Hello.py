@@ -13,6 +13,9 @@
 # limitations under the License.
 
 import streamlit as st
+import pandas as pd
+import numpy as np
+
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
@@ -28,6 +31,11 @@ def run():
 
     st.subheader("Woot!")
 
+    df = pd.DataFrame(
+      np.random.randn(50, 20),
+      columns=('col %d' % i for i in range(20)))
+
+    st.dataframe(df)  # Same as st.write(df)
     st.sidebar.success("Select a demo above.")
 
     st.markdown(
